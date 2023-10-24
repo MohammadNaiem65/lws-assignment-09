@@ -6,7 +6,7 @@ const apiSlice = createApi({
 		baseUrl: 'http://localhost:9000',
 	}),
 	// eslint-disable-next-line no-unused-vars
-	endpoints: (builder) => {},
+	endpoints: (builder) => ({}),
 });
 
 export default apiSlice;
