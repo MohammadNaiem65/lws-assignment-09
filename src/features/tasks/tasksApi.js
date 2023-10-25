@@ -11,6 +11,25 @@ const tasksApi = apiSlice.injectEndpoints({
 				method: 'POST',
 				body: data,
 			}),
+			async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+				try {
+					const { data } = await queryFulfilled;
+
+					// pessimistic tasks cache update
+
+					dispatch(
+						apiSlice.util.updateQueryData(
+							'getTasks',
+							undefined,
+							(draft) => {
+								draft.push(data);
+							}
+						)
+					);
+				} catch (error) {
+					//
+				}
+			},
 		}),
 	}),
 });
