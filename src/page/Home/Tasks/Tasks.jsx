@@ -33,7 +33,7 @@ export default function Tasks() {
 
 	// overall filtered tasks
 	const filteredTasks = filterTasksByProjects(
-		tasks?.filter((task) => task.taskName.includes(keyword))
+		tasks?.filter((task) => task.taskName.toLowerCase().includes(keyword))
 	);
 
 	// decide what to render
