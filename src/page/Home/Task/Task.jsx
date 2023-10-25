@@ -20,7 +20,6 @@ export default function Task({ task }) {
 		sumit: sumitImg,
 	};
 
-	console.log(status);
 	return (
 		<div className='lws-task'>
 			<div className='flex items-center gap-2 text-slate'>
