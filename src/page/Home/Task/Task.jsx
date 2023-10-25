@@ -65,6 +65,7 @@ export default function Task({ task }) {
 						</svg>
 					</button>
 				)}
+				
 				{status !== 'completed' && (
 					<button className='lws-edit'>
 						<svg
