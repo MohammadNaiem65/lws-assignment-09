@@ -2,7 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	keyword: '',
-	projects: [],
+	projects: [
+		'Scoreboard',
+		'Flight Booking',
+		'Product Cart',
+		'Book Store',
+		'Blog Application',
+		'Job Finder',
+	],
 };
 
 const filterSlice = createSlice({
@@ -24,5 +31,5 @@ const filterSlice = createSlice({
 	},
 });
 
-export default filterSlice;
+export default filterSlice.reducer;
 export const { filterByKeyword, filterByProject } = filterSlice.actions;

@@ -65,7 +65,7 @@ export default function Task({ task }) {
 						</svg>
 					</button>
 				)}
-				
+
 				{status !== 'completed' && (
 					<button className='lws-edit'>
 						<svg
@@ -84,20 +84,10 @@ export default function Task({ task }) {
 					</button>
 				)}
 
-				<select className='lws-status'>
-					<option
-						value='pending'
-						selected={!status || status === 'pending'}>
-						Pending
-					</option>
-					<option
-						value='inProgress'
-						selected={status === 'inProgress'}>
-						In Progress
-					</option>
-					<option value='complete' selected={status === 'completed'}>
-						Completed
-					</option>
+				<select className='lws-status' value={status || 'pending'}>
+					<option value='pending'>Pending</option>
+					<option value='inProgress'>In Progress</option>
+					<option value='completed'>Completed</option>
 				</select>
 			</div>
 		</div>

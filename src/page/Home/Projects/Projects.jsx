@@ -1,7 +1,9 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetProjectsQuery } from '../../../features/projects/projectsApi';
 import Error from '../../../ui/Error';
 import Loading from '../../../ui/Loading';
 import NoContent from '../../../ui/NoContent';
+import { filterByProject } from '../../../features/filter/filterSlice';
 
 export default function Projects() {
 	// hooks
@@ -12,6 +14,19 @@ export default function Projects() {
 		isError,
 		error,
 	} = useGetProjectsQuery();
+	const { projects: filteredProjects } = useSelector((state) => state.filter);
+	const dispatch = useDispatch();
+
+	// handle filter by projects
+	const handleFilterStatus = (e) => {
+		if (!filteredProjects.includes(e.target.name)) {
+			dispatch(filterByProject({ type: 'add', project: e.target.name }));
+		} else {
+			dispatch(
+				filterByProject({ type: 'remove', project: e.target.name })
+			);
+		}
+	};
 
 	// decide what to render
 	let content;
@@ -30,7 +45,11 @@ export default function Projects() {
 						<input
 							type='checkbox'
 							className={project.colorClass}
-							checked
+							name={project.projectName}
+							checked={filteredProjects.includes(
+								project.projectName
+							)}
+							onChange={handleFilterStatus}
 						/>
 						<p className='label'>{project.projectName}</p>
 					</div>
