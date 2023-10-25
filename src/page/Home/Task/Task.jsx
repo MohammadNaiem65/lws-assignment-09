@@ -48,7 +48,7 @@ export default function Task({ task }) {
 					<p className='lws-task-assignedOn'>{teamMember.name}</p>
 				</div>
 
-				{/* <!-- delete button will not shown to the ui, until the status of the task will be completed --> */}
+				{/*  delete button will not shown to the ui, until the status of the task will be completed  */}
 				{status === 'completed' && (
 					<button className='lws-delete'>
 						<svg
@@ -66,6 +66,7 @@ export default function Task({ task }) {
 					</button>
 				)}
 
+				{/*  edit button will not shown to the ui, if` the status of the task will be completed  */}
 				{status !== 'completed' && (
 					<button className='lws-edit'>
 						<svg
