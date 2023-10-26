@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import {
+	useDeleteTaskMutation,
+	useEditTaskMutation,
+} from '../../../features/tasks/tasksApi';
 import akashImg from '../../../assets/avatars/akash.png';
 import almasImg from '../../../assets/avatars/almas.png';
 import ferdousImg from '../../../assets/avatars/ferdous.png';
@@ -7,10 +11,10 @@ import riyadhImg from '../../../assets/avatars/riyadh.png';
 import sadhImg from '../../../assets/avatars/sadh.png';
 import salahuddinImg from '../../../assets/avatars/salahuddin.png';
 import sumitImg from '../../../assets/avatars/sumit.png';
-import { useDeleteTaskMutation } from '../../../features/tasks/tasksApi';
 
 export default function Task({ task }) {
 	// hooks
+	const [editTask] = useEditTaskMutation();
 	const [deleteTask] = useDeleteTaskMutation();
 
 	// local states
@@ -24,6 +28,13 @@ export default function Task({ task }) {
 		sadh: sadhImg,
 		salahuddin: salahuddinImg,
 		sumit: sumitImg,
+	};
+
+	// handle updating task status
+	const handleUpdateStatus = (e) => {
+		const data = { status: e.target.value };
+
+		editTask({ id, data });
 	};
 
 	return (
@@ -93,7 +104,10 @@ export default function Task({ task }) {
 					</Link>
 				)}
 
-				<select className='lws-status' value={status || 'pending'}>
+				<select
+					className='lws-status'
+					value={status || 'pending'}
+					onChange={handleUpdateStatus}>
 					<option value='pending'>Pending</option>
 					<option value='inProgress'>In Progress</option>
 					<option value='completed'>Completed</option>

@@ -68,5 +68,22 @@
       "id": 7
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "taskName": "Implement GraphQL",
+      "teamMember": {
+        "name": "Sumit Saha",
+        "avatar": "/images/avatars/sumit.png",
+        "id": 1
+      },
+      "deadline": "2023-10-27",
+      "project": {
+        "id": 2,
+        "projectName": "Flight Booking",
+        "colorClass": "color-flight"
+      },
+      "status": "pending",
+      "id": 1
+    }
+  ]
 }
