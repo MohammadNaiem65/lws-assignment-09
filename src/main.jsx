@@ -21,6 +21,10 @@ const routes = createBrowserRouter([
 				path: '/addNew',
 				element: <AddNew />,
 			},
+			{
+				path: '/editTask/:id',
+				element: <AddNew />,
+			},
 		],
 	},
 ]);

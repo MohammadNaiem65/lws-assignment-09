@@ -1,8 +1,19 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAddTaskMutation } from '../../../features/tasks/tasksApi';
+import { useNavigate, useParams } from 'react-router-dom';
+import {
+	useAddTaskMutation,
+	useGetTaskQuery,
+} from '../../../features/tasks/tasksApi';
 
 export default function Form({ members, projects }) {
+	// hooks
+	const { id } = useParams();
+	const { data: taskData } = useGetTaskQuery(id && id, {
+		skip: id === undefined,
+	});
+	const [addTask, { isSuccess: taskAddSuccess }] = useAddTaskMutation();
+	const navigate = useNavigate();
+
 	// local states
 	const [taskDetails, setTaskDetails] = useState({
 		taskName: '',
@@ -12,10 +23,6 @@ export default function Form({ members, projects }) {
 		status: 'pending',
 	});
 
-	// hooks
-	const [addTask, { isSuccess }] = useAddTaskMutation();
-	const navigate = useNavigate();
-
 	const handleAddTask = (e) => {
 		e.preventDefault();
 
@@ -23,7 +30,25 @@ export default function Form({ members, projects }) {
 	};
 
 	useEffect(() => {
-		if (isSuccess) {
+		if (taskData?.taskName) {
+			setTaskDetails({
+				taskName: taskData.taskName,
+				teamMember: taskData.teamMember,
+				deadline: taskData.deadline,
+				project: taskData.project,
+				status: taskData.status,
+			});
+		}
+	}, [
+		taskData?.taskName,
+		taskData?.teamMember,
+		taskData?.deadline,
+		taskData?.project,
+		taskData?.status,
+	]);
+
+	useEffect(() => {
+		if (taskAddSuccess) {
 			navigate('/');
 		}
 	});
@@ -54,6 +79,7 @@ export default function Form({ members, projects }) {
 					name='teamMember'
 					id='lws-teamMember'
 					required
+					value={taskDetails.teamMember.id}
 					onChange={(e) =>
 						setTaskDetails({
 							...taskDetails,
@@ -77,6 +103,7 @@ export default function Form({ members, projects }) {
 					id='lws-projectName'
 					name='projectName'
 					required
+					value={taskDetails.project.id}
 					onChange={(e) =>
 						setTaskDetails({
 							...taskDetails,
