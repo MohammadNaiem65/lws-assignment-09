@@ -70,18 +70,18 @@
   ],
   "tasks": [
     {
-      "taskName": "Task One",
+      "taskName": "Implement Graph",
       "teamMember": {
-        "name": "Saad Hasan",
-        "avatar": "/images/avatars/sadh.png",
-        "id": 2
+        "name": "Sumit Saha",
+        "avatar": "/images/avatars/sumit.png",
+        "id": 1
       },
       "project": {
         "id": 1,
         "projectName": "Scoreboard",
         "colorClass": "color-scoreboard"
       },
-      "deadline": "2023-03-15",
+      "deadline": "2023-03-05",
       "id": 1,
       "status": "inProgress"
     },
@@ -116,7 +116,7 @@
       "id": 3
     },
     {
-      "taskName": "New Task",
+      "taskName": "chache update test",
       "teamMember": {
         "name": "Sumit Saha",
         "avatar": "/images/avatars/sumit.png",
@@ -127,7 +127,7 @@
         "projectName": "Scoreboard",
         "colorClass": "color-scoreboard"
       },
-      "deadline": "2023-07-11",
+      "deadline": "2023-07-15",
       "id": 4
     },
     {
@@ -147,13 +147,13 @@
       "status": "completed"
     },
     {
-      "taskName": "Implement",
+      "taskName": "Implement GraphQL",
       "teamMember": {
         "name": "Sumit Saha",
         "avatar": "/images/avatars/sumit.png",
         "id": 1
       },
-      "deadline": "2023-10-17",
+      "deadline": "2023-10-20",
       "project": {
         "id": 1,
         "projectName": "Scoreboard",
@@ -163,7 +163,7 @@
       "id": 6
     },
     {
-      "taskName": "Hello World",
+      "taskName": "Final Test",
       "teamMember": {
         "name": "Sumit Saha",
         "avatar": "/images/avatars/sumit.png",

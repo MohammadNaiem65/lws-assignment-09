@@ -2,17 +2,19 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
 	useAddTaskMutation,
+	useEditTaskMutation,
 	useGetTaskQuery,
 } from '../../../features/tasks/tasksApi';
 
 export default function Form({ members, projects }) {
 	// hooks
 	const { id } = useParams();
-	const { data: taskData } = useGetTaskQuery(id && id, {
+	const navigate = useNavigate();
+	const { data: taskData } = useGetTaskQuery(id, {
 		skip: id === undefined,
 	});
 	const [addTask, { isSuccess: taskAddSuccess }] = useAddTaskMutation();
-	const navigate = useNavigate();
+	const [editTask, { isSuccess: taskEditSuccess }] = useEditTaskMutation();
 
 	// local states
 	const [taskDetails, setTaskDetails] = useState({
@@ -23,12 +25,18 @@ export default function Form({ members, projects }) {
 		status: 'pending',
 	});
 
-	const handleAddTask = (e) => {
+	// submit task for both add and edit case
+	const handleSubmitTask = (e) => {
 		e.preventDefault();
 
-		addTask(taskDetails);
+		if (!id) {
+			addTask(taskDetails);
+		} else if (id) {
+			editTask({ id, data: taskDetails });
+		}
 	};
 
+	// fll form if task data exists
 	useEffect(() => {
 		if (taskData?.taskName) {
 			setTaskDetails({
@@ -47,14 +55,15 @@ export default function Form({ members, projects }) {
 		taskData?.status,
 	]);
 
+	// navigate to homepage if add or edit process get success
 	useEffect(() => {
-		if (taskAddSuccess) {
+		if (taskAddSuccess || taskEditSuccess) {
 			navigate('/');
 		}
-	});
+	}, [navigate, taskAddSuccess, taskEditSuccess]);
 
 	return (
-		<form className='space-y-6' onSubmit={handleAddTask}>
+		<form className='space-y-6' onSubmit={handleSubmitTask}>
 			<div className='fieldContainer'>
 				<label htmlFor='lws-taskName'>Task Name</label>
 				<input
