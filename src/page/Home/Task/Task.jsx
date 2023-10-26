@@ -7,8 +7,12 @@ import riyadhImg from '../../../assets/avatars/riyadh.png';
 import sadhImg from '../../../assets/avatars/sadh.png';
 import salahuddinImg from '../../../assets/avatars/salahuddin.png';
 import sumitImg from '../../../assets/avatars/sumit.png';
+import { useDeleteTaskMutation } from '../../../features/tasks/tasksApi';
 
 export default function Task({ task }) {
+	// hooks
+	const [deleteTask] = useDeleteTaskMutation();
+
 	// local states
 	const { taskName, teamMember, deadline, project, status, id } = task;
 
@@ -52,7 +56,9 @@ export default function Task({ task }) {
 
 				{/*  delete button will not shown to the ui, until the status of the task will be completed  */}
 				{status === 'completed' && (
-					<button className='lws-delete'>
+					<button
+						className='lws-delete'
+						onClick={() => deleteTask(id)}>
 						<svg
 							fill='none'
 							viewBox='0 0 24 24'
