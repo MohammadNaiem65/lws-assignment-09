@@ -76,14 +76,46 @@
         "avatar": "/images/avatars/sumit.png",
         "id": 1
       },
-      "deadline": "2023-10-27",
+      "deadline": "2023-10-30",
       "project": {
         "id": 2,
         "projectName": "Flight Booking",
         "colorClass": "color-flight"
       },
-      "status": "pending",
+      "status": "inProgress",
       "id": 1
+    },
+    {
+      "taskName": "Hello World",
+      "teamMember": {
+        "name": "Sumit Saha",
+        "avatar": "/images/avatars/sumit.png",
+        "id": 1
+      },
+      "deadline": "2023-10-23",
+      "project": {
+        "id": 5,
+        "projectName": "Blog Application",
+        "colorClass": "color-blog"
+      },
+      "status": "completed",
+      "id": 2
+    },
+    {
+      "taskName": "Test App",
+      "teamMember": {
+        "name": "Saad Hasan",
+        "avatar": "/images/avatars/sadh.png",
+        "id": 2
+      },
+      "deadline": "2023-10-30",
+      "project": {
+        "id": 5,
+        "projectName": "Blog Application",
+        "colorClass": "color-blog"
+      },
+      "status": "pending",
+      "id": 3
     }
   ]
 }

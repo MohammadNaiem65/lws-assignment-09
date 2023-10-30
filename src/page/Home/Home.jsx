@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
-import Projects from './Projects/Projects';
-import TeamMembers from './TeamMembers/TeamMembers';
-import Tasks from './Tasks/Tasks';
+import { Projects, TeamMembers, Tasks } from './';
 
 export default function Home() {
 	return (

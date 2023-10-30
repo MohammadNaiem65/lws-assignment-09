@@ -1,14 +1,14 @@
 import { useGetMembersQuery } from '../../../features/teamMembers/teamMembersApi';
-import Loading from '../../../ui/Loading';
-import Error from '../../../ui/Error';
-import NoContent from '../../../ui/NoContent';
-import akashImg from '../../../assets/avatars/akash.png';
-import almasImg from '../../../assets/avatars/almas.png';
-import ferdousImg from '../../../assets/avatars/ferdous.png';
-import riyadhImg from '../../../assets/avatars/riyadh.png';
-import sadhImg from '../../../assets/avatars/sadh.png';
-import salahuddinImg from '../../../assets/avatars/salahuddin.png';
-import sumitImg from '../../../assets/avatars/sumit.png';
+import { Error, Loading, NoContent } from '../../../ui';
+import {
+	akashImg,
+	almasImg,
+	ferdousImg,
+	riyadhImg,
+	sadhImg,
+	salahuddinImg,
+	sumitImg,
+} from '../../../assets';
 
 export default function TeamMembers() {
 	// hooks
@@ -59,6 +59,8 @@ export default function TeamMembers() {
 			</>
 		);
 	}
+
+	console.log('TeamMembers component rendered');
 
 	return (
 		<section className='mt-8'>

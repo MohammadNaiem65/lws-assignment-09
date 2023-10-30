@@ -4,6 +4,7 @@ import Error from '../../../ui/Error';
 import Loading from '../../../ui/Loading';
 import NoContent from '../../../ui/NoContent';
 import { filterByProject } from '../../../features/filter/filterSlice';
+import { selectFilter } from '../../../features/filter/filterSelectors';
 
 export default function Projects() {
 	// hooks
@@ -14,7 +15,7 @@ export default function Projects() {
 		isError,
 		error,
 	} = useGetProjectsQuery();
-	const { projects: filteredProjects } = useSelector((state) => state.filter);
+	const { projects: filteredProjects } = useSelector(selectFilter);
 	const dispatch = useDispatch();
 
 	// handle filter by projects
@@ -57,6 +58,8 @@ export default function Projects() {
 			</div>
 		);
 	}
+
+	console.log('projects rendered');
 
 	return (
 		<section>

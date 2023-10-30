@@ -1,9 +1,8 @@
-import { useGetTasksQuery } from '../../../features/tasks/tasksApi';
-import Loading from '../../../ui/Loading';
-import Error from '../../../ui/Error';
-import NoContent from '../../../ui/NoContent';
-import Task from '../Task/Task';
 import { useSelector } from 'react-redux';
+import { useGetTasksQuery } from '../../../features/tasks/tasksApi';
+import { Error, Loading, NoContent } from '../../../ui';
+import Task from '../Task/Task';
+import { selectFilter } from '../../../features/filter/filterSelectors';
 
 export default function Tasks() {
 	// hooks
@@ -14,7 +13,7 @@ export default function Tasks() {
 		isError,
 		error,
 	} = useGetTasksQuery();
-	const { keyword, projects } = useSelector((state) => state.filter);
+	const { keyword, projects } = useSelector(selectFilter);
 
 	// filter tasks by projects
 	const filterTasksByProjects = (keywordFilteredTasks) => {
@@ -56,6 +55,8 @@ export default function Tasks() {
 			</>
 		);
 	}
+
+	console.log('Tasks component rendered');
 
 	return <section className='lws-task-list'>{content}</section>;
 }

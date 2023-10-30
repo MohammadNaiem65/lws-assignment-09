@@ -4,13 +4,15 @@ import {
 	useDeleteTaskMutation,
 	useEditTaskMutation,
 } from '../../../features/tasks/tasksApi';
-import akashImg from '../../../assets/avatars/akash.png';
-import almasImg from '../../../assets/avatars/almas.png';
-import ferdousImg from '../../../assets/avatars/ferdous.png';
-import riyadhImg from '../../../assets/avatars/riyadh.png';
-import sadhImg from '../../../assets/avatars/sadh.png';
-import salahuddinImg from '../../../assets/avatars/salahuddin.png';
-import sumitImg from '../../../assets/avatars/sumit.png';
+import {
+	akashImg,
+	almasImg,
+	ferdousImg,
+	riyadhImg,
+	sadhImg,
+	salahuddinImg,
+	sumitImg,
+} from '../../../assets';
 
 export default function Task({ task }) {
 	// hooks
@@ -36,6 +38,8 @@ export default function Task({ task }) {
 
 		editTask({ id, data });
 	};
+
+	console.log('Task rendered');
 
 	return (
 		<div className='lws-task'>
